@@ -13,12 +13,12 @@ public class PanelBotonesAgregar extends JPanel implements ActionListener
     /**
      * El comando utilizado para el botón que sirve para crear un nuevo restaurante
      */
-    private static final String CREAR = "nuevo";
+    private static final String CREAR = "Crear restaurante";
 
     /**
      * El comando utilizado para el botón que sirve para cerrar la ventana sin crear un restaurante
      */
-    private static final String CERRAR = "ver";
+    private static final String CERRAR = "Cerrar";
 
     private JButton butNuevo;
     private JButton butCerrar;
@@ -33,12 +33,12 @@ public class PanelBotonesAgregar extends JPanel implements ActionListener
         this.ventanaPrincipal = ventanaPrincipal;
 
         setLayout( new FlowLayout( ) );
-
-        // Agrega el botón para crear el restaurante
-        // TODO completar
-
-        // Agrga el boton para cerrar la ventana
-        // TODO completar
+        this.butNuevo = new JButton(CREAR);
+        this.butCerrar = new JButton(CERRAR);
+        this.add(butNuevo);
+        this.add(butCerrar);
+        butNuevo.addActionListener(this);
+        butCerrar.addActionListener(this);
     }
 
     @Override

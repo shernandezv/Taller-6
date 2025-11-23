@@ -28,17 +28,36 @@ public class PanelEditarRestaurante extends JPanel
 
     public PanelEditarRestaurante( )
     {
-        // Crea el campo para el nombre con una etiqueta al frente
-        // TODO completar
+    	this.setLayout(new GridLayout(3, 1));
 
-        // Crea el selector para la calificación con una etiqueta al frente
-        // TODO completar
+        JPanel panelNombre = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel lblNombre = new JLabel("Nombre:  ");
+        txtNombre = new JTextField(20);
+        panelNombre.add(lblNombre);
+        panelNombre.add(txtNombre);
 
-        // Crea el selector para indicar si ya ha sido visitado, con una etiqueta al frente
-        // TODO completar
+        JPanel panelCalif = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel lblCalif = new JLabel("Calificación:  ");
+        cbbCalificacion = new JComboBox<>();
+        cbbCalificacion.addItem("1");
+        cbbCalificacion.addItem("2");
+        cbbCalificacion.addItem("3");
+        cbbCalificacion.addItem("4");
+        cbbCalificacion.addItem("5");
+        panelCalif.add(lblCalif);
+        panelCalif.add(cbbCalificacion);
 
-        // Agregar todos los elementos al panel
-        // TODO completar
+        JPanel panelVisitado = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel lblVisitado = new JLabel("Visitado:  ");
+        cbbVisitado = new JComboBox<>();
+        cbbVisitado.addItem("Sí");
+        cbbVisitado.addItem("No");
+        panelVisitado.add(lblVisitado);
+        panelVisitado.add(cbbVisitado);
+
+        this.add(panelNombre);
+        this.add(panelCalif);
+        this.add(panelVisitado);
 
     }
 
@@ -48,8 +67,8 @@ public class PanelEditarRestaurante extends JPanel
      */
     public boolean getVisitado( )
     {
-        // TODO completar
-        return false;
+    	String valor = (String)cbbVisitado.getSelectedItem();
+        return valor.equals("Sí");
     }
 
     /**
@@ -68,7 +87,6 @@ public class PanelEditarRestaurante extends JPanel
      */
     public String getNombre( )
     {
-        // TODO completar
-        return "";
+    	return txtNombre.getText();
     }
 }

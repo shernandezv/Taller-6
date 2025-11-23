@@ -2,6 +2,7 @@ package uniandes.dpoo.swing.interfaz.mapa;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.List;
@@ -38,8 +39,23 @@ public class PanelMapaVisualizar extends JPanel
     {
         super.paint( g );
         Graphics2D g2d = ( Graphics2D )g;
+        
+        g2d.setFont(new Font("Arial", Font.BOLD, 12));
+        g2d.setColor(Color.RED);
 
-     // TODO completar y hacer que se vean los nombres de todos los restaurantes en el mapa
+        // Dibujar cada restaurante
+        for (Restaurante r : restaurantes)
+        {
+            int x = r.getX();
+            int y = r.getY();
+            String nombre = r.getNombre();
+
+            // Dibujar un punto
+            g2d.fillOval(x - 4, y - 4, 8, 8);
+
+            // Dibujar el nombre a la derecha del punto
+            g2d.drawString(nombre, x + 8, y);
+        }
     }
 
     /**

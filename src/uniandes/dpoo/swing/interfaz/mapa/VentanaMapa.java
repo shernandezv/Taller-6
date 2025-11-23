@@ -1,8 +1,10 @@
 package uniandes.dpoo.swing.interfaz.mapa;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -19,12 +21,12 @@ public class VentanaMapa extends JFrame implements ActionListener
     /**
      * El comando para reconocer al radio que muestra sólo los restaurantes visitados
      */
-    private static final String VISITADOS = "VISITADOS";
+    private static final String VISITADOS = "Visitados";
 
     /**
      * El comando para reconocer al radio que muestra todos los restaurantes
      */
-    private static final String TODOS = "TODOS";
+    private static final String TODOS = "Todos";
 
     /**
      * El panel con el mapa
@@ -46,15 +48,31 @@ public class VentanaMapa extends JFrame implements ActionListener
      */
     private VentanaPrincipal ventanaPrincipal;
 
-    public VentanaMapa( VentanaPrincipal ventanaPrincipal, List<Restaurante> restaurantes )
+    public VentanaMapa( VentanaPrincipal ventanaPrincipal)
     {
         this.ventanaPrincipal = ventanaPrincipal;
 
-        // Agrega el panel donde se muestra el mapa
-        // TODO completar
+        panelMapa = new PanelMapaVisualizar();
+        panelMapa.actualizarMapa(new ArrayList<Restaurante>());
+        add(panelMapa, BorderLayout.CENTER);
 
-        // Agrega el panel con los RadioButtons y los configura
-        // TODO completar
+        JPanel panelOpciones = new JPanel();
+        panelOpciones.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+
+        radioTodos = new JRadioButton(TODOS);
+        radioTodos.addActionListener(this);
+
+        radioVisitados = new JRadioButton(VISITADOS);
+        radioVisitados.addActionListener(this);
+
+        ButtonGroup grupo = new ButtonGroup();
+        grupo.add(radioTodos);
+        grupo.add(radioVisitados);
+
+        panelOpciones.add(radioTodos);
+        panelOpciones.add(radioVisitados);
+
+        add(panelOpciones, BorderLayout.SOUTH);
 
         // Termina de configurar la ventana y la muestra
         pack( );

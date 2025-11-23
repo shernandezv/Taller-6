@@ -13,12 +13,12 @@ public class PanelBotones extends JPanel implements ActionListener
     /**
      * El comando para el botón para crear un nuevo restaurante
      */
-    private static final String NUEVO = "nuevo";
+    private static final String NUEVO = "Nuevo";
 
     /**
      * El comando para el botón para ver todos los restaurantes en el mapa
      */
-    private static final String VER = "ver";
+    private static final String VER = "Ver todos";
 
     private JButton butNuevo;
     private JButton butVerTodos;
@@ -28,13 +28,15 @@ public class PanelBotones extends JPanel implements ActionListener
     {
         this.ventanaPrincipal = ventanaPrincipal;
 
-        setLayout( new FlowLayout( ) );
+        this.setLayout( new FlowLayout( ) );
 
-        // Agrega el botón para crear un nuevo restaurante
-        // TODO completar
-
-        // Agrega el botón para ver todos los restaurantes
-        // TODO completar
+        
+        this.butNuevo = new JButton(NUEVO);
+        this.butVerTodos = new JButton(VER);
+        this.add(butNuevo);
+        this.add(butVerTodos);
+        butNuevo.addActionListener(this);
+        butVerTodos.addActionListener(this);
     }
 
     @Override
@@ -44,10 +46,12 @@ public class PanelBotones extends JPanel implements ActionListener
         if( comando.equals( NUEVO ) )
         {
             ventanaPrincipal.mostrarVetanaNuevoRestaurante( );
+//            System.out.println("Se oprimió nuevo");
         }
         else if( comando.equals( VER ) )
         {
             ventanaPrincipal.mostrarVentanaMapa( );
+//            System.out.println("Se oprimió ver todos");
         }
     }
 }
